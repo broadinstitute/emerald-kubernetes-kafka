@@ -37,30 +37,9 @@ If you begin to rely on this kafka setup we recommend you fork, for example to e
 |       |        | ... see [releases](https://github.com/Yolean/kubernetes-kafka/releases) for full history ... |
 | v1.0  | 1      | Stateful? In Kubernetes? In 2016? Yes. |
 
-## Monitoring
-
-Have a look at:
- * [./prometheus](./prometheus/)
- * [./linkedin-burrow](./linkedin-burrow/)
- * [or plain JMX](https://github.com/Yolean/kubernetes-kafka/pull/96)
- * what's happening in the [monitoring](https://github.com/Yolean/kubernetes-kafka/labels/monitoring) label.
- * Note that this repo is intentionally light on [automation](https://github.com/Yolean/kubernetes-kafka/labels/automation). We think every SRE team must build the operational knowledge first.
-
 ## Outside (out-of-cluster) access
 
 Available for:
 
  * [Brokers](./outside-services/)
 
-## Fewer than three nodes?
-
-For [minikube](https://github.com/kubernetes/minikube/), [youkube](https://github.com/Yolean/youkube) etc:
-
- * [Scale 1](https://github.com/Yolean/kubernetes-kafka/pull/44)
- * [Scale 2](https://github.com/Yolean/kubernetes-kafka/pull/118)
-
-## Stream...
-
- * [Kubernetes events to Kafka](./events-kube/)
- * [Container logs to Kafka](https://github.com/Yolean/kubernetes-kafka/pull/131)
- * [Heapster metrics to Kafka](https://github.com/Yolean/kubernetes-kafka/pull/120)
