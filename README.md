@@ -12,11 +12,15 @@ To quote [@arthurk](https://github.com/Yolean/kubernetes-kafka/issues/82#issueco
 ## Getting started
 
 We suggest you `apply -f` manifests in the following order:
- * Your choice of storage classes from [./configure](./configure/)
- * [namespace](./00-namespace.yml)
- * [./rbac-namespace-default](./rbac-namespace-default/)
- * [./zookeeper](./zookeeper/)
- * [./kafka](./kafka/)
+- kubectl apply -f ./configure
+- kubectl apply -f 00-namespace.yml
+- kubectl create clusterrolebinding <username>-cluster-admin-binding --clusterrole cluster-admin --user <username>@broadinstitute.org                                            
+- kubectl --namespace=kafka apply -f ./configure/psp
+- kubectl apply --namespace=kafka -f ./zookeeper
+- kubectl apply --namespace=kafka -f ./kafka
+- kubectl apply --namespace=kafka -f ./outside-services
+ 
+
 
 That'll give you client "bootstrap" `bootstrap.kafka.svc.cluster.local:9092`.
 
@@ -42,4 +46,3 @@ If you begin to rely on this kafka setup we recommend you fork, for example to e
 Available for:
 
  * [Brokers](./outside-services/)
-
