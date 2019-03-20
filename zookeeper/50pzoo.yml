@@ -20,6 +20,7 @@ spec:
         storage: persistent
       annotations:
     spec:
+      serviceAccountName: transporter-sa
       terminationGracePeriodSeconds: 10
       initContainers:
       - name: init-config

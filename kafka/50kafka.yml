@@ -18,6 +18,7 @@ spec:
         app: kafka
       annotations:
     spec:
+      serviceAccountName: transporter-sa
       terminationGracePeriodSeconds: 30
       initContainers:
       - name: init-config
