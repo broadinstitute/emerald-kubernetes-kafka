@@ -12,14 +12,28 @@ To quote [@arthurk](https://github.com/Yolean/kubernetes-kafka/issues/82#issueco
 ## Getting started
 
 We suggest you `apply -f` manifests in the following order:
-- kubectl apply -f ./configure
-- kubectl apply -f 00-namespace.yml
-- kubectl create clusterrolebinding <username>-cluster-admin-binding --clusterrole cluster-admin --user <username>@broadinstitute.org                                            
-- kubectl --namespace=kafka apply -f ./configure/psp
-- kubectl apply --namespace=kafka -f ./zookeeper
-- kubectl apply --namespace=kafka -f ./kafka
-- kubectl apply --namespace=kafka -f ./outside-services
- 
+```
+ #storage configuration for gcp
+ kubectl apply -f ./configure
+
+ #create namespace in k8s
+ kubectl apply -f 00-namespace.yml
+
+ #add your account as cluster admin
+ kubectl create clusterrolebinding <username>-cluster-admin-binding --clusterrole cluster-admin --user <username>@broadinstitute.org                                
+
+ #configure podsecuritypolicies
+ kubectl --namespace=kafka apply -f ./configure/psp
+
+ #deploy zookeeper
+ kubectl apply --namespace=kafka -f ./zookeeper
+
+ #deploy kafka
+ kubectl apply --namespace=kafka -f ./kafka
+
+ #expose kafka outside pods
+ kubectl apply --namespace=kafka -f ./outside-services
+ ```
 
 
 That'll give you client "bootstrap" `bootstrap.kafka.svc.cluster.local:9092`.
