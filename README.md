@@ -31,7 +31,7 @@ We suggest you `apply -f` manifests in the following order:
  #deploy kafka
  kubectl apply --namespace=dev -f ./kafka
 
- #expose kafka outside pods
+ #expose kafka outside pods and allows readiness check for kafka
  kubectl apply --namespace=dev -f ./outside-services
  ```
 
