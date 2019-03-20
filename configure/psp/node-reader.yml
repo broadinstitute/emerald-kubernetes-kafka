@@ -33,5 +33,5 @@ roleRef:
   name: node-reader
 subjects:
 - kind: ServiceAccount
-  name: transporter-sa
-  namespace: kafka
+  name: dev-sa
+  namespace: dev

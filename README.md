@@ -23,16 +23,16 @@ We suggest you `apply -f` manifests in the following order:
  kubectl create clusterrolebinding <username>-cluster-admin-binding --clusterrole cluster-admin --user <username>@broadinstitute.org                                
 
  #configure podsecuritypolicies
- kubectl --namespace=kafka apply -f ./configure/psp
+ kubectl --namespace=dev apply -f ./configure/psp
 
  #deploy zookeeper
- kubectl apply --namespace=kafka -f ./zookeeper
+ kubectl apply --namespace=dev -f ./zookeeper
 
  #deploy kafka
- kubectl apply --namespace=kafka -f ./kafka
+ kubectl apply --namespace=dev -f ./kafka
 
  #expose kafka outside pods
- kubectl apply --namespace=kafka -f ./outside-services
+ kubectl apply --namespace=dev -f ./outside-services
  ```
 
 

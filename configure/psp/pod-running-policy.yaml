@@ -3,7 +3,7 @@ kind: PodSecurityPolicy
 metadata:
   name: pod-running-policy
   labels:
-    name: kafka
+    name: dev
 spec:
   privileged: true  # Don't allow privileged pods!
   # The rest fills in some required fields.

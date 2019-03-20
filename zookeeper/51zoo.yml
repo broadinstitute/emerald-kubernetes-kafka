@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: zoo
-  namespace: kafka
+  namespace: dev
 spec:
   selector:
     matchLabels:
@@ -20,7 +20,7 @@ spec:
         storage: persistent-regional
       annotations:
     spec:
-      serviceAccountName: transporter-sa
+      serviceAccountName: dev-sa
       terminationGracePeriodSeconds: 10
       initContainers:
       - name: init-config
