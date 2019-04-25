@@ -54,6 +54,8 @@ spec:
           value: -Dlog4j.configuration=file:/etc/kafka/log4j.properties
         - name: JMX_PORT
           value: "5555"
+        - name: KAFKA_HEAP_OPTS
+          value: -Xmx1g -Xms1g
         ports:
         - name: inside
           containerPort: 9092
@@ -70,13 +72,10 @@ spec:
              command: ["sh", "-ce", "kill -s TERM 1; while $(kill -0 1 2>/dev/null); do sleep 1; done"]
         resources:
           requests:
-            cpu: 100m
-            memory: 100Mi
+            cpu: 750m
+            memory: 1152Mi
           limits:
-            # This limit was intentionally set low as a reminder that
-            # the entire Yolean/kubernetes-kafka is meant to be tweaked
-            # before you run production workloads
-            memory: 600Mi
+            memory: 1280Mi
         readinessProbe:
           tcpSocket:
             port: 9092
