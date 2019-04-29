@@ -40,7 +40,7 @@ spec:
         - name: KAFKA_LOG4J_OPTS
           value: -Dlog4j.configuration=file:/etc/kafka/log4j.properties
         - name: KAFKA_HEAP_OPTS
-          value: -Xmx1g -Xms1g
+          value: -Xmx512m -Xms512m
         command:
         - ./bin/zookeeper-server-start.sh
         - /etc/kafka/zookeeper.properties
@@ -57,10 +57,10 @@ spec:
           name: leader-election
         resources:
           requests:
-            cpu: 250m
-            memory: 1152Mi
+            cpu: 500m
+            memory: 544Mi
           limits:
-            memory: 1280Mi
+            memory: 576Mi
         readinessProbe:
           exec:
             command:

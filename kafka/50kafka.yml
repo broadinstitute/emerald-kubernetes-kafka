@@ -72,10 +72,10 @@ spec:
              command: ["sh", "-ce", "kill -s TERM 1; while $(kill -0 1 2>/dev/null); do sleep 1; done"]
         resources:
           requests:
-            cpu: 750m
-            memory: 1152Mi
+            cpu: 2000m
+            memory: 2048Mi
           limits:
-            memory: 1280Mi
+            memory: 2048Mi
         readinessProbe:
           tcpSocket:
             port: 9092
