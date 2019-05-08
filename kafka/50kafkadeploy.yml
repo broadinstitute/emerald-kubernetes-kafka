@@ -1,21 +1,21 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: kafka
   namespace: dev
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: kafka
-  serviceName: "broker"
-  replicas: 3
-  updateStrategy:
-    type: RollingUpdate
-  podManagementPolicy: Parallel
+      service: broker
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: kafka
+        service: broker
       annotations:
     spec:
       serviceAccountName: dev-sa
@@ -72,10 +72,10 @@ spec:
              command: ["sh", "-ce", "kill -s TERM 1; while $(kill -0 1 2>/dev/null); do sleep 1; done"]
         resources:
           requests:
-            cpu: 2000m
-            memory: 2048Mi
+            cpu: 750m
+            memory: 1152Mi
           limits:
-            memory: 2048Mi
+            memory: 1280Mi
         readinessProbe:
           tcpSocket:
             port: 9092
@@ -95,12 +95,16 @@ spec:
         emptyDir: {}
       - name: extensions
         emptyDir: {}
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: kafka-broker
-      resources:
-        requests:
-          storage: 10Gi
+      - name: data
+        persistentVolumeClaim:
+          claimName: kafka-broker-pvc
+
+#  volumeClaimTemplates:
+#  - metadata:
+#      name: data
+#    spec:
+#      accessModes: [ "ReadWriteOnce" ]
+#      storageClassName: kafka-broker
+#      resources:
+#        requests:
+#          storage: 22Gi

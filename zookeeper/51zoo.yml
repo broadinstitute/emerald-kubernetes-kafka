@@ -60,10 +60,10 @@ spec:
           name: leader-election
         resources:
           requests:
-            cpu: 500m
-            memory: 544Mi
-          limits:
+            cpu: 256m
             memory: 576Mi
+          limits:
+            memory: 640Mi
         readinessProbe:
           exec:
             command:
@@ -89,4 +89,4 @@ spec:
       storageClassName: kafka-zookeeper-regional
       resources:
         requests:
-          storage: 1Gi
+          storage: 5Gi
