@@ -60,7 +60,7 @@ spec:
             cpu: 500m
             memory: 544Mi
           limits:
-            memory: 576Mi
+            memory: 640Mi
         readinessProbe:
           exec:
             command:
@@ -86,4 +86,4 @@ spec:
       storageClassName: kafka-zookeeper
       resources:
         requests:
-          storage: 1Gi
+          storage: 5Gi
