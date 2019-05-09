@@ -33,9 +33,6 @@ fi
 #configure podsecuritypolicies
 kubectl --namespace=dev apply -f ./configure/psp
 
-#configure persistentVolumeClaim
-kubectl --namespace=dev apply -f ./configure/pvc
-
 #deploy zookeeper
 kubectl apply --namespace=dev -f ./zookeeper
 
