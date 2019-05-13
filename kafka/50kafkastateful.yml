@@ -82,7 +82,7 @@ spec:
              command: ["sh", "-ce", "kill -s TERM 1; while $(kill -0 1 2>/dev/null); do sleep 1; done"]
         resources:
           requests:
-            cpu: 2000m
+            cpu: 400m
             memory: 2048Mi
           limits:
             memory: 2048Mi
@@ -113,4 +113,4 @@ spec:
       storageClassName: kafka-broker
       resources:
         requests:
-          storage: 100Gi
+          storage: 125Gi
