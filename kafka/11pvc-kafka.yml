@@ -5,7 +5,7 @@ metadata:
   namespace: dev
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: kafka-broker
   resources:
     requests:
