@@ -1,15 +1,15 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: outside-2
+  name: outside-3
   namespace: dev
 spec:
   selector:
     app: kafka
-    kafka-broker-id: "2"
+    kafka-broker-id: "3"
   ports:
   - protocol: TCP
     targetPort: 9094
-    port: 32402
-    nodePort: 32402
+    port: 32400
+    nodePort: 32400
   type: NodePort

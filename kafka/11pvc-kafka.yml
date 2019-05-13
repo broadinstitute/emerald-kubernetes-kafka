@@ -9,4 +9,4 @@ spec:
   storageClassName: kafka-broker
   resources:
     requests:
-      storage: 30Gi
+      storage: 130Gi
