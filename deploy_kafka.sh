@@ -12,7 +12,8 @@ echo    # (optional) move to a new line
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
   kubectl get namespace dev 2>/dev/null && kubectl delete namespace dev
-  gcloud --project=broad-dsp-monster-dev compute disks list | grep k8-pvc | awk '{print $1}' | xargs gcloud --project=broad-dsp-monster-dev compute disks delete
+  sleep 2
+  gcloud --project=broad-dsp-monster-dev compute disks list --filter k8-pvc | grep k8-pvc | awk '{print $1}' | xargs gcloud --project=broad-dsp-monster-dev compute disks delete
 fi
 
 #create namespace in k8s
